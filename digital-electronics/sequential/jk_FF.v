@@ -6,7 +6,9 @@ module jk_FF(
     output     q_bar
 );
 
-always @(posedge clk)begin
+initial q = 0; // only done for sole implementation of counter
+
+always @(negedge clk)begin
     case({j,k})
         2'b00:begin
         //hold
