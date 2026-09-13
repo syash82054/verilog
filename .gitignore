@@ -1,6 +1,6 @@
 # Icarus Verilog
 *.vvp
-a.out
+*_out
 
 # GTKWave
 *.vcd
