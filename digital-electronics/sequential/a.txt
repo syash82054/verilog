@@ -1,0 +1,119 @@
+module bcd_to_7_segment(
+input [4:0] i,
+output reg a,b,c,d,e,f,g
+);
+always(*)begin
+a= 1'b0;
+b = 1'b0;
+c = 1'b0;
+d = 1'b0;
+e = 1'b0;
+f = 1'b0;
+g = 1'b0;
+case (i)
+4'b0000:begin
+a =1'b1;
+b=1'b1;
+c=1'b1;
+d=1'b1;
+e=1'b1;
+f=1'b1;
+g=1'b0;
+end
+4'b0001:begin
+b = 1'b1;
+c= 1'b1;
+end
+4'b0010:begin
+a = 1'b1;
+b=  1'1b;
+g = 1'b1;
+e = 1'b1;
+d = 1'b1;
+end
+4'b0011:begin
+a= 1'b1;
+b = 1'b1;
+c= 1'b1;
+g = 1'b1;
+d = 1'b1;
+end
+4'b0100:begin
+f = 1'b1;
+b = 1'b1;
+g = 1'b1;
+c = 1'b1;
+end
+4'b0101:begin
+f = 1'b1;
+a = 1'b1;
+g = 1'b1;
+c = 1'b1;
+d = 1'b1;
+end
+4'b0110:begin
+a = 1'b1;
+f = 1'b1;
+g = 1'b1;
+e = 1'b1;
+c = 1'b1;
+d = 1'b1;
+end
+4'b0111:begin
+a = 1'b1;
+b = 1'b1;
+c = 1'b1;
+end 
+4' b1000: begin
+a = 1'b1;
+b = 1'b1;
+c = 1'b1;
+d = 1'b1;
+e = 1'b1;
+f = 1'b1;
+g = 1'b1;
+end
+4'b1001: begin
+a = 1'b1;
+b = 1'b1;
+c = 1'b1;
+g = 1'b1;
+f = 1'b1;
+d = 1'b1;
+end
+
+endcase
+
+endmodule
+
+
+
+
+module bcd_to_7_segment_tb;
+reg [3:0] i;
+wire a,b,c,d,e,f,g;
+
+bcd_to_7_segment uut(
+.i(i),
+.a(a),
+.b(b),
+.c(c),
+.d(d),
+.e(e),
+.f(f),
+.g(g)
+);
+
+initial begin
+$dumpfile("bcd_to_7_segment.vcd");
+$dumpvars(0,bcd_to_7_segment_tb);
+
+for(integer k = 0; k < 10; k = k + 1)begin
+{i} = k;
+#10;
+$display("i - %b|a = %b|b = %b|c = %b|d = %b|e= %b|f=%b|g=%b",i,a,b,c,d,e,f,g);
+end
+$finish;
+end
+
+endmodule

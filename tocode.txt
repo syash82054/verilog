@@ -1,0 +1,2 @@
+decoder using nand
+octal to bin priority encoder
