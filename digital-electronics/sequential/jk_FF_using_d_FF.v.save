@@ -1,0 +1,8 @@
+module jk_FF_using_d_FF(
+input j,
+input k,
+output reg q,
+output q_bar
+);
+
+d_FF d1(
